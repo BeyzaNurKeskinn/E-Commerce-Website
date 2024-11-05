@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+@model IEnumerable<eticaretb.Models.Blog>
+
+<ul id="nav" class="main-menu">
+    <li><a asp-controller="Anasayfa" asp-action="Anasayfa"></a></li>
+    @{
+        string link = ""; // link değişkeninin döngü dışında tanımlanması
+    }
+
+    @foreach (var item in Model)
+    {
+        <li>
+            @if (!String.IsNullOrEmpty(item.Link))
+            {
+                link = item.Link;
+            }
+            else
+            {
+                link = "/Anasayfa/SayfaDetay/" + item.Adi + "-" + item.Id;
+                //item değişkeninin Link özelliği boş değilse, link değişkenine item.
+                //Link değeri atanmış. Eğer Link özelliği boş ise, link değişkenine "/Anasayfa/SayfaDetay/" + item.Adi + "-" + item.Id değeri atanmış.
+                //Bu, Link özelliği dolu olan öğelerin ilgili linklerini, dolu olmayan öğelerin ise belirli bir URL formatıyla
+                //oluşturulan linklerini temsil etmektedir. 
+                // Yukarıdaki döngüde blog öğelerine göre liste oluşturuldu
+            }
+            <a href="@link">@item.Adi</a>
+        </li>
+    }
+</ul>

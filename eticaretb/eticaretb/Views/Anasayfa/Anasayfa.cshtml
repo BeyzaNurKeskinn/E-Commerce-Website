@@ -1,0 +1,7 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var slider = (IEnumerable<eticaretb.Models.Slider>)ViewBag.slider;
+    var urunler = (IEnumerable<eticaretb.Models.Urun>)ViewBag.product;
+}
+@await Html.PartialAsync("~/Views/Slider/Slider.cshtml", slider)
+@await Html.PartialAsync("~/Views/Urunler/Urunler.cshtml",urunler)

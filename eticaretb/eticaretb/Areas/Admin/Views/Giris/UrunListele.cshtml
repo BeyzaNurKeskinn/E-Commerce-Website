@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<eticaretb.Models.Urun>
+<!-- RENDER -->
+    <div class="row">
+        <div class="col-md-12">           
+                <div class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Ürün</strong></h3>
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-body">
+
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Resim</label>
+                                <div class="col-md-6 col-xs-12">
+                                <img src="@item.URL" width="50" height="50" alt="IMG-PRODUCT">
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Kategori Id</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="CATEGORYID" value="@item.CATEGORYID" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Ürün Adı</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="ITEMNAME" value="@item.ITEMNAME" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Birim Fiyat</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="UNITPRICE" value="@item.UNITPRICE" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Açıklama</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="ACIKLAMA" value="@item.ACIKLAMA" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Durum</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="ITEMSTATE" value="@item.ITEMSTATE" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Marka</label>
+                            <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="BRAND" value="@item.BRAND" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+
+                    }
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            
+            </div>
+    </div>
+
+<!-- RENDER -->

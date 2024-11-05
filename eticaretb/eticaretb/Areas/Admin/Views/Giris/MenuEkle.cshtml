@@ -1,0 +1,102 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@model eticaretb.Models.UstMenu
+
+<!-- RENDER -->
+
+    <div class="row">
+        <div class="col-md-12">
+        @using (Html.BeginForm("MenuEkle", "Giris", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        
+                <div class="form-horizontal">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Menü</strong></h3>
+
+
+
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-body">
+
+
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">ParentId</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="ParentId" value="" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Adı</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Adi" value="" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Link</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Link" value="" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Sira</label>
+                            <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Sira" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">AktifMi</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="AktifMi" value="" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Dil</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Language" value="" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">YeniSayfadaAc</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="YeniSayfadaAc" value="" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-default">Temizle</button>
+                            <button class="btn btn-primary pull-right">Kaydet</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            }
+            </div>
+    </div>
+
+<!-- RENDER -->

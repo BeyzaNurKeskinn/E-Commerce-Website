@@ -1,0 +1,67 @@
+﻿@model IEnumerable<eticaretb.Models.Slider>
+
+<section class="section-slide" >
+	<div class="wrap-slick1">
+			<div class="slick1">
+				@foreach (var item in Model.Take(3))
+			{
+				<div class="item-slick1" style="background-image: url(@item.Resim);">
+				<div class="container h-full">
+					<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+						<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+							<span class="ltext-101 cl2 respon2">
+								@item.Baslik
+							</span>
+						</div>
+
+						<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+							<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+									@item.AltBaslik
+							</h2>
+						</div>
+
+						<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
+                            <a href="/Shop/product" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+                                Şimdi Alışveriş Yapın
+                            </a>
+						</div>
+					</div>
+				</div>
+			</div>
+			}
+		</div>
+	</div>
+</section>
+
+
+@*<script src="~/vue/vueslider.js"></script>*@
+
+
+@*
+
+@section scripts{
+	<script>
+		var slider = new Vue({
+			el:"#slider",
+			data: {
+				sliderVerisi:[]
+			},
+			mounted:function(){
+				this.getirSlider();
+			},
+			methods:{
+				getirSlider: function(){
+					var vm= this;
+					$.ajax({ url: "/Slider/GetirSlider", method:"POST" })
+					   .done( function (data){
+							vm.sliderVerisi=data.gelendata;
+					   });
+				}
+			}
+
+		})
+
+
+	</script>
+}*@
+

@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+}
+
+@model IEnumerable<eticaretb.Models.UstMenu>
+
+<ul id="nav" class="main-menu">
+    <li><a asp-controller="Anasayfa" asp-action="Anasayfa">Anasayfa</a></li>
+
+    @{
+        foreach (var item in Model)
+        {
+            <li>
+                @if (item.ParentId == null && Model.Where(a => a.ParentId == item.Id).Any())
+                {
+                    <a>@item.Adi</a>
+                }
+                else if (item.ParentId == null && Model.Where(a => a.ParentId != item.Id).Any())
+                {
+                    var link = "";
+                    if (!String.IsNullOrEmpty(item.Link)) { link = item.Link; }
+                    else { link = "/Anasayfa/SayfaDetay/" + item.Adi + "-" + item.Id; }
+                    <a href="@link">@item.Adi</a>
+                }
+
+                <ul>
+                    @foreach (var item1 in Model.Where(a => item.Id == a.ParentId).OrderBy(x => x.Sira))
+                    {
+                        var link = "";
+                        if (item1.Link != null && item1.Link != "") { link = item1.Link; }
+                        else { link = "/Anasayfa/SayfaDetay/" + item1.Adi + "-" + item1.Id; }
+
+                        if (item1.YeniSayfadaAc == false)
+                        {
+                            <li><a style="text-transform:none;" href="@link">@item1.Adi</a></li>
+                        }
+                        else
+                        {
+                            <li><a style="text-transform:none;" target="_blank" href="@link">@item1.Adi</a></li>
+                        }
+                    }
+
+
+                </ul>
+            </li>
+        }
+
+
+    }
+
+
+    @*<li>
+    <a href="#">Kurumsal</a>
+
+    <ul>
+    <li><a style="text-transform:none;" href="SayfaDetay.html">Hakkımızda</a></li>
+    <li><a style="text-transform:none;" href="#">Komisyon Üyeleri</a></li>
+    <li><a style="text-transform:none;" href="#">Akademik Personel</a></li>
+    </ul>
+    </li>
+    <li><a href="#">Projeler</a></li>
+    <li><a href="#">Haberler</a></li>
+    <li><a href="#">Galeri</a></li>
+    <li><a href="Iletisim.html">İletişim</a></li>*@
+</ul>

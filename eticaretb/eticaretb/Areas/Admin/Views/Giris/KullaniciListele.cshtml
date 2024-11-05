@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<eticaretb.Models.Kullanicilar>
+<!-- RENDER -->
+    <div class="row">
+        <div class="col-md-12">           
+                <div class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><strong>Kullanıcı</strong></h3>
+                            <ul class="panel-controls">
+                                <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="panel-body">
+
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">Resim</label>
+                                <div class="col-md-6 col-xs-12">
+                                <img src="@item.KucukResimYolu" width="50" height="50" name="Resim" alt="IMG-PRODUCT">
+                                
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Ad</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Ad" value="@item.Ad" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Soyad</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Soyad" value="@item.Soyad" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Email</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Email" value="@item.Email" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">Rol</label>
+                                <div class="col-md-6 col-xs-12">
+                                <input type="text" class="form-control" name="Rol" value="@item.Rol" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+
+                    }
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            
+            </div>
+    </div>
+
+<!-- RENDER -->

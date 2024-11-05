@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+@model IEnumerable<eticaretb.Models.UstMenu>
+
+<ul id="nav" class="main-menu">
+    <li><a asp-controller="Anasayfa" asp-action="Anasayfa">Anasayfa</a></li>
+
+    @{
+        foreach (var item in Model)
+        {
+        <li>
+            @* Kontrol bloğu: Eğer item'ın ParentId değeri null ise ve Model içinde ParentId'si item'ın Id'sine eşit olan bir öğe varsa *@
+
+            @if (item.ParentId == null && Model.Where(a => a.ParentId == item.Id).Any())
+            {
+                <a>@item.Adi</a>
+            }
+            @* Kontrol bloğu: Eğer item'ın ParentId değeri null ise ve Model içinde ParentId'si item'ın Id'sine eşit olmayan bir öğe varsa *@
+            else if (item.ParentId == null && Model.Where(a => a.ParentId != item.Id).Any())
+            {
+                var link = "";
+                if (!String.IsNullOrEmpty(item.Link)) { link = item.Link; }
+                else { link = "/Anasayfa/SayfaDetay/" + item.Adi + "-" + item.Id; }
+                <a href="@link">@item.Adi</a>
+            }
+
+        <ul>
+            @* item'ın Id'si, a'nın ParentId'si olan her bir item1 öğesi için döngü başlatılır ve sıralama yapılır *@
+            @foreach (var item1 in Model.Where(a => item.Id == a.ParentId).OrderBy(x => x.Sira))
+            {
+                var link = "";
+                if (item1.Link != null && item1.Link != "") { link = item1.Link; }
+                else { link = "/Anasayfa/SayfaDetay/" + item1.Adi + "-" + item1.Id; }
+
+                @* Kontrol bloğu: Eğer item1'in YeniSayfadaAc değeri false ise *@
+                if (item1.YeniSayfadaAc == false)
+                {
+                    <li><a style="text-transform:none;" href="@link">@item1.Adi</a></li>
+                }
+                @* Kontrol bloğu: Eğer item1'in YeniSayfadaAc değeri true ise *@
+                else
+                {
+                    <li><a style="text-transform:none;" target="_blank" href="@link">@item1.Adi</a></li>
+                }
+            }
+
+
+        </ul>
+        </li>
+        }
+
+
+    }
+</ul>
